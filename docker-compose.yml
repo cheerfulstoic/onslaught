@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      - PHX_HOST=localhost
+      - SECRET_KEY_BASE=your-secret-key-base-here-replace-with-generated-key
+      - PORT=4000
+    restart: unless-stopped

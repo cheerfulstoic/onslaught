@@ -1,0 +1,50 @@
+# Ignore build artifacts and cache
+/_build
+/deps
+/doc
+/.elixir_ls
+/.vscode
+
+# Ignore node modules
+/assets/node_modules
+
+# Ignore test files
+/test
+
+# Ignore development files
+/.env
+/.env.local
+/.env.development.local
+/.env.test.local
+/.env.production.local
+
+# Ignore git
+/.git
+/.gitignore
+
+# Ignore docker files
+/.dockerignore
+
+# Ignore logs
+*.log
+
+# Ignore temporary files
+.DS_Store
+Thumbs.db
+
+# Ignore coverage
+/cover
+
+# Ignore local hex packages
+*.tar
+
+# Ignore backup files
+*~
+*.bak
+*.tmp
+*.swp
+*.swo
+
+# Ignore IDE files
+.idea/
+*.iml

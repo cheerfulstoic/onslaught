@@ -4,7 +4,7 @@ defmodule Onslaught.Spawner.Options do
   import PolymorphicEmbed
 
   @session_mods [
-    Onslaught.Session.Simple
+    Onslaught.Session.GET
   ]
 
   defmodule Header do
@@ -72,7 +72,7 @@ defmodule Onslaught.Spawner.Options do
 
     polymorphic_embeds_one(:session,
       types: [
-        {Onslaught.Session.Simple, Onslaught.Session.Simple.Options}
+        {Onslaught.Session.GET, Onslaught.Session.GET.Options}
       ],
       on_type_not_found: :raise,
       # ,

@@ -11,10 +11,9 @@ defmodule OnslaughtWeb.Telemetry do
     children = [
       # Telemetry poller will execute the given period measurements
       # every 10_000ms. Learn more here: https://hexdocs.pm/telemetry_metrics
-      {:telemetry_poller, measurements: periodic_measurements(), period: 10_000},
+      {:telemetry_poller, measurements: periodic_measurements(), period: 10_000}
       # Add reporters as children of your supervision tree.
       # {Telemetry.Metrics.ConsoleReporter, metrics: metrics()}
-      {OtelTelemetryMetrics, metrics: OnslaughtWeb.Telemetry.metrics()}
     ]
 
     Supervisor.init(children, strategy: :one_for_one)
@@ -43,7 +42,6 @@ defmodule OnslaughtWeb.Telemetry do
       #
       summary("tesla.request.stop.duration",
         tags: [:method, :host, :path, :status],
-        reporter_options: otel_reporter_options(:request_time),
         tag_values: fn attrs ->
           uri = URI.parse(attrs.env.url)
 
@@ -133,20 +131,6 @@ defmodule OnslaughtWeb.Telemetry do
       summary("vm.total_run_queue_lengths.total"),
       summary("vm.total_run_queue_lengths.cpu"),
       summary("vm.total_run_queue_lengths.io")
-    ]
-  end
-
-  @bucket_boundaries %{
-    request_time: [0.5, 1, 2.5, 5, 7.5, 10, 25, 50, 75, 100, 250, 500, 750, 1000]
-  }
-
-  defp otel_reporter_options(type) do
-    [
-      otel: %{
-        advisory_params: %{
-          explicit_bucket_boundaries: Map.fetch!(@bucket_boundaries, type)
-        }
-      }
     ]
   end
 

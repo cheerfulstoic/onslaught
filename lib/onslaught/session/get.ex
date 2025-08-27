@@ -1,4 +1,4 @@
-defmodule Onslaught.Session.Simple do
+defmodule Onslaught.Session.GET do
   @behaviour Onslaught.Session.Adapter
 
   defmodule Options do
@@ -12,7 +12,7 @@ defmodule Onslaught.Session.Simple do
       embeds_many :base_headers, Onslaught.Spawner.Options.Header
     end
 
-    def changeset(%Onslaught.Session.Simple.Options{} = source, data) do
+    def changeset(%Onslaught.Session.GET.Options{} = source, data) do
       source
       |> cast(data, [:url])
       |> validate_required([:url])

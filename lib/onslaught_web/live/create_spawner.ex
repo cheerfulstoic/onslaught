@@ -4,7 +4,7 @@ defmodule OnslaughtWeb.CreateSpawner do
   use OnslaughtWeb, :live_view
 
   @session_mods [
-    Onslaught.Session.Simple
+    Onslaught.Session.GET
   ]
 
   def mount(_, _, socket) do
@@ -16,7 +16,7 @@ defmodule OnslaughtWeb.CreateSpawner do
        "seconds" => 60,
        "pool_count" => 1,
        "pool_size" => 200,
-       "session_mod" => to_string(Onslaught.Session.Simple),
+       "session_mod" => to_string(Onslaught.Session.GET),
        "session" => %{}
      })}
   end
@@ -72,7 +72,7 @@ defmodule OnslaughtWeb.CreateSpawner do
             <h3 class="text-lg font-semibold text-gray-800 mb-4">Session Options</h3>
 
             <p>
-              Each session will loop the number of times you specify. For example, a "Simple" session will just make a request once every one second, so starting up 100 sessions will create 100 requests/second of traffic.
+              Each session will loop the number of times you specify. For example, a "GET" session will just make a request once every one second, so starting up 100 sessions will create 100 requests/second of traffic.
             </p>
 
             <div class="flex items-center">

@@ -29,8 +29,6 @@ config :onslaught, OnslaughtWeb.Endpoint,
     tailwind: {Tailwind, :install_and_run, [:onslaught, ~w(--watch)]}
   ]
 
-config :onslaught, otel_endpoint: "http://localhost:4318"
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed

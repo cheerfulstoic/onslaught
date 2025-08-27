@@ -14,7 +14,7 @@ defmodule Onslaught.Spawner.OptionsTest do
           ]
         },
         "session_count" => 2,
-        "session_mod" => "Elixir.Onslaught.Session.Simple"
+        "session_mod" => "Elixir.Onslaught.Session.GET"
       })
 
     assert changeset.valid?
@@ -33,13 +33,14 @@ defmodule Onslaught.Spawner.OptionsTest do
           ]
         },
         "session_count" => "string!",
-        "session_mod" => "Elixir.Onslaught.Session.Simple"
+        "session_mod" => "Elixir.Onslaught.Session.GET"
       })
 
     refute changeset.valid?
+
     assert changeset.errors == [
-      {:session_count, {"is invalid", [type: :integer, validation: :cast]}}
-    ]
+             {:session_count, {"is invalid", [type: :integer, validation: :cast]}}
+           ]
   end
 
   test "nested data of wrong type" do
@@ -55,12 +56,13 @@ defmodule Onslaught.Spawner.OptionsTest do
           ]
         },
         "session_count" => 2,
-        "session_mod" => "Elixir.Onslaught.Session.Simple"
+        "session_mod" => "Elixir.Onslaught.Session.GET"
       })
 
     refute changeset.valid?
 
-    assert changeset.changes.session.errors == [url: {"is invalid", [type: :string, validation: :cast]}]
+    assert changeset.changes.session.errors == [
+             url: {"is invalid", [type: :string, validation: :cast]}
+           ]
   end
 end
-
